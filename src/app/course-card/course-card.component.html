@@ -1,5 +1,5 @@
 @if (course) {
-<div class="" [ngClass]="{'beginner': false,'course-card':true}">
+<div class="course-card" >
     
     <div class="course-title">
         {{ cardIndex }} {{ course.description }}
@@ -14,6 +14,28 @@
     
     <div class="course-description">
         {{ course.longDescription}}
+    </div>
+
+
+    <div class="course-category">
+
+        @switch (course.category) {
+            @case ("BEGINNER") {
+                <ng-container>
+                    <div class="category">Beginner</div>
+                </ng-container>
+            }
+            @case ("INTERMEDIATE") {
+                <div class="category">Intermediate</div>
+            }
+            @case ("ADVANCED") {
+                <div class="category">Advanced</div>
+            }
+            @default {
+                <div class="category">All levels</div>    
+            }
+        }
+
     </div>
     
     <button (click)="onCourseViewed()">View course</button>

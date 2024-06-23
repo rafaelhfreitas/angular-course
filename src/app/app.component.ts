@@ -11,6 +11,9 @@ export class AppComponent {
 
 
   courses = COURSES;
+
+
+  startDate = new Date(2000,0,1);
   
   
   onCardClicked() {
