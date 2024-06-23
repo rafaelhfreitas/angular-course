@@ -26,6 +26,12 @@ export class CourseCardComponent {
 
   constructor(){
   }
+
+
+  isImageVisible(){
+    return this.course && this.course.iconUrl;
+  }
+
    
   
   onCourseViewed() {
