@@ -14,7 +14,7 @@
 <div>
 
 
-  @defer {
+  @defer(on immediate; prefetch on immediate) {
     <div class="courses">
       @for (course of courses; track course; let count = $count; let i = $index; let isFirst = $first; 
           let isLast = $last; let isEven = $even; let isOdd = $odd) {
@@ -27,8 +27,11 @@
       }
     </div>
   }  
-  @placeholder(minimum 3s) {
+  @placeholder {
     <h2>This is the placeholder!</h2>
+  }
+  @loading (minimum 3s) {
+    <h2>This is a loading indicator... </h2>
   }
 
 </div>
