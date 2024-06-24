@@ -1,19 +1,21 @@
 import { Component } from '@angular/core';
 import { COURSES } from '../db-data';
 import { Course } from './model/course';
+import { CourseCardComponent } from './course-card/course-card.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  standalone: true,
+  imports: [CourseCardComponent]
 })
 export class AppComponent {
 
-
   courses = COURSES;
 
-
   startDate = new Date(2000,0,1);
+  title = COURSES[0].description;
   
   
   onCardClicked() {

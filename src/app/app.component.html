@@ -6,25 +6,28 @@
   </div>
 
 
-  <div class="demo">
+  <!-- <div class="demo">
     <div>Start date: {{startDate | date: 'MM/dd/yyyy'}}</div>
-  </div>
+    <div>{{ title | titlecase }} </div>
+  </div> -->
+
+<div>
 
 
-  <div class="courses">
+  @defer {
+    <div class="courses">
+      @for (course of courses; track course; let count = $count; let i = $index; let isFirst = $first; 
+          let isLast = $last; let isEven = $even; let isOdd = $odd) {
+        <course-card
+          [course]="course"
+          [cardIndex]="i + 1"
+          [class.is-first]="isFirst"
+          [class.is-last]="isLast"
+          (courseSelected)="onCourseSelected($event)" />
+      }
+    </div>
+  }  
 
-
-    @for (course of courses; track course; let count = $count; let i = $index; let isFirst = $first; 
-        let isLast = $last; let isEven = $even; let isOdd = $odd) {
-      <course-card
-        [course]="course"
-        [cardIndex]="i + 1"
-        [class.is-first]="isFirst"
-        [class.is-last]="isLast"
-        (courseSelected)="onCourseSelected($event)" />
-    }
-
-
-  </div>
+</div>
 
 
