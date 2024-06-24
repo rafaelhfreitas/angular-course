@@ -14,7 +14,7 @@
 <div>
 
 
-  @defer(on immediate; prefetch on immediate) {
+  @defer(on timer(10s); prefetch on timer(5s)) {
     <div class="courses">
       @for (course of courses; track course; let count = $count; let i = $index; let isFirst = $first; 
           let isLast = $last; let isEven = $even; let isOdd = $odd) {
