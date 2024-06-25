@@ -18,7 +18,7 @@
 
 <div>
 
-  @defer(on viewport(title); prefetch on idle) {
+  @defer(on interaction; prefetch on idle) {
     <div class="courses">
       @for (course of courses; track course; let count = $count; let i = $index; let isFirst = $first; 
           let isLast = $last; let isEven = $even; let isOdd = $odd) {
@@ -32,7 +32,8 @@
     </div>
   }  
   @placeholder {
-    <h2>This is the placeholder!</h2>
+    <!-- <h2>This is the placeholder!</h2> -->
+     <input placeholder="This is the placeholder">
   }
   @loading (minimum 5s) {
     <h2>This is a loading indicator... </h2>
