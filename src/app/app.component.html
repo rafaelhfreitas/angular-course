@@ -11,10 +11,12 @@
     <div>{{ title | titlecase }} </div>
   </div> -->
 
+<div style="border: 5px solid red; min-height: 900px; margin: 10px;"> </div>
+
+
 <div>
 
-
-  @defer(on timer(15s); prefetch on timer(5s)) {
+  @defer(on viewport; prefetch on idle) {
     <div class="courses">
       @for (course of courses; track course; let count = $count; let i = $index; let isFirst = $first; 
           let isLast = $last; let isEven = $even; let isOdd = $odd) {
@@ -36,6 +38,7 @@
   @error {
     <h2>An error occoured.</h2>
   }
+
 </div>
 
 
