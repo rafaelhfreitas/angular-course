@@ -1,13 +1,16 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { AfterViewInit, Component, ContentChild, ElementRef, EventEmitter, Input, Output } from '@angular/core';
 import { Course } from '../model/course';
+import { NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
+import { CourseImageComponent } from '../course-image/course-image.component';
 
 @Component({
   selector: 'course-card',
   standalone: true,
+  imports:[NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault],
   templateUrl: './course-card.component.html',
   styleUrl: './course-card.component.css'
 })
-export class CourseCardComponent {
+export class CourseCardComponent implements AfterViewInit{
 
 
   @Input({
@@ -24,7 +27,16 @@ export class CourseCardComponent {
   @Output('courseSelected')
   courseEmitter = new EventEmitter<Course>();  
 
+
+  @ContentChild(CourseImageComponent, {read: ElementRef})
+  image: CourseImageComponent
+
   constructor(){
+  }
+
+
+  ngAfterViewInit(): void {
+      console.log(this.image);
   }
 
 

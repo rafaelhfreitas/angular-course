@@ -1,64 +1,21 @@
 <div class="top-menu">
 
-  <img class="logo"
-    src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png">
-
-  </div>
-
-<!-- <div style="border: 5px solid red; min-height: 200px; margin: 10px; padding: 10px;"> 
-
-  <button (click)="onPrefetch()">Trigger prefetch </button>
-  <button (click)="onDisplay()" >Trigger display </button>
+  <img class="logo" src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png">
 
 </div>
 
-<div>
-  @defer {
-    <div class="courses">
-      @for (course of courses; track course; let count = $count; let i = $index; let isFirst = $first; 
-          let isLast = $last; let isEven = $even; let isOdd = $odd) {
-        <course-card
-          [course]="course"
-          [cardIndex]="i + 1"
-          [class.is-first]="isFirst"
-          [class.is-last]="isLast"
-          (courseSelected)="onCourseSelected($event)" />
-      }
-    </div>
-  }  
-  @placeholder {
-    <h2>This is the placeholder!</h2>
-  }
-  @loading (minimum 3s) {
-    <h2>This is a loading indicator... </h2>
-  }
-  @error {
-    <h2>An error occoured.</h2>
-  }
-  
+<div class="courses" *ngIf="courses[0] as course">
 
-</div> -->
+  <course-card
+      (courseSelected)="onCourseSelected($event)"
+      [course]="course">
 
+      <course-image [src]="course.iconUrl"></course-image>
 
-<button (click)="onCoursesEdited()">Edit course</button>
+      <div class="course-description">
+        {{course.longDescription}}
+      </div>
 
-<div> 
-
-
-    <div class="courses">
-      @for (course of courses; track course; let count = $count; let i = $index; let isFirst = $first; 
-          let isLast = $last; let isEven = $even; let isOdd = $odd) {
-        <course-card
-          [course]="course"
-          [cardIndex]="i + 1"
-          [class.is-first]="isFirst"
-          [class.is-last]="isLast"
-          (courseSelected)="onCourseSelected($event)" />
-      }
-    </div>
-  
-
+  </course-card>
 
 </div>
-
-
