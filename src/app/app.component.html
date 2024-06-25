@@ -14,7 +14,7 @@
 <div>
 
 
-  @defer(on timer(10s); prefetch on timer(5s)) {
+  @defer(on timer(15s); prefetch on timer(5s)) {
     <div class="courses">
       @for (course of courses; track course; let count = $count; let i = $index; let isFirst = $first; 
           let isLast = $last; let isEven = $even; let isOdd = $odd) {
@@ -30,10 +30,12 @@
   @placeholder {
     <h2>This is the placeholder!</h2>
   }
-  @loading (minimum 3s) {
+  @loading (minimum 5s) {
     <h2>This is a loading indicator... </h2>
   }
-
+  @error {
+    <h2>An error occoured.</h2>
+  }
 </div>
 
 
