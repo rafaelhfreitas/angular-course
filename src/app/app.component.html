@@ -5,26 +5,17 @@
 
   </div>
 
+<div #triggerDisplay style="border: 5px solid red; min-height: 200px; margin: 10px; padding: 10px;"> 
 
-  <!-- <div class="demo">
-    <div>Start date: {{startDate | date: 'MM/dd/yyyy'}}</div>
-    <div>{{ title | titlecase }} </div>
-  </div> -->
-
-<!-- <div style="border: 5px solid red; min-height: 900px; margin: 10px;"> </div>
-<h1 #title>Trigger viewport</h1> -->
-
-
-<div class="demo-triggers">
-  <input placeholder="This is the placeholder" #prefetch>
-  <button #display>Trigger display</button>
+  <button #display>Trigger display </button>
 
 </div>
 
 
+
 <div>
 
-  @defer(on interaction(display); prefetch on interaction(prefetch)) {
+  @defer(on interaction(display); prefetch on hover(triggerDisplay)) {
     <div class="courses">
       @for (course of courses; track course; let count = $count; let i = $index; let isFirst = $first; 
           let isLast = $last; let isEven = $even; let isOdd = $odd) {
