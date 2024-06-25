@@ -5,17 +5,19 @@
 
   </div>
 
-<div #triggerDisplay style="border: 5px solid red; min-height: 200px; margin: 10px; padding: 10px;"> 
+<div style="border: 5px solid red; min-height: 200px; margin: 10px; padding: 10px;"> 
 
-  <button #display>Trigger display </button>
+  <button (click)="onPrefetch()">Trigger prefetch </button>
+
+  <button (click)="onDisplay()" >Trigger display </button>
 
 </div>
 
 
 
-<div>
+<div> 
 
-  @defer(on interaction(display); prefetch on hover(triggerDisplay)) {
+  @defer(when display; prefetch when performPrefetch) {
     <div class="courses">
       @for (course of courses; track course; let count = $count; let i = $index; let isFirst = $first; 
           let isLast = $last; let isEven = $even; let isOdd = $odd) {

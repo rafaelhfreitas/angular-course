@@ -11,11 +11,13 @@ import { CourseCardComponent } from './course-card/course-card.component';
   imports: [CourseCardComponent]
 })
 export class AppComponent {
-
   courses = COURSES;
 
   startDate = new Date(2000,0,1);
   title = COURSES[0].description;
+
+  performPrefetch: boolean = false;
+  display: boolean = false;
   
   
   onCardClicked() {
@@ -27,9 +29,20 @@ export class AppComponent {
 
   }
 
-
   trackCourse(index: number, course: Course) {
     return course.id;
   }
+
+
+  onPrefetch() {
+    this.performPrefetch = true;
+  }
+
+  onDisplay(){
+    this.display = true;
+  }
+
+
+    
 
 }
