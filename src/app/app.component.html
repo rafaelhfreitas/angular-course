@@ -5,19 +5,15 @@
 
   </div>
 
-<div style="border: 5px solid red; min-height: 200px; margin: 10px; padding: 10px;"> 
+<!-- <div style="border: 5px solid red; min-height: 200px; margin: 10px; padding: 10px;"> 
 
   <button (click)="onPrefetch()">Trigger prefetch </button>
-
   <button (click)="onDisplay()" >Trigger display </button>
 
 </div>
 
-
-
-<div> 
-
-  @defer(when display; prefetch when performPrefetch) {
+<div>
+  @defer {
     <div class="courses">
       @for (course of courses; track course; let count = $count; let i = $index; let isFirst = $first; 
           let isLast = $last; let isEven = $even; let isOdd = $odd) {
@@ -33,12 +29,35 @@
   @placeholder {
     <h2>This is the placeholder!</h2>
   }
-  @loading (minimum 5s) {
+  @loading (minimum 3s) {
     <h2>This is a loading indicator... </h2>
   }
   @error {
     <h2>An error occoured.</h2>
   }
+  
+
+</div> -->
+
+
+<button (click)="onCoursesEdited()">Edit course</button>
+
+<div> 
+
+
+    <div class="courses">
+      @for (course of courses; track course; let count = $count; let i = $index; let isFirst = $first; 
+          let isLast = $last; let isEven = $even; let isOdd = $odd) {
+        <course-card
+          [course]="course"
+          [cardIndex]="i + 1"
+          [class.is-first]="isFirst"
+          [class.is-last]="isLast"
+          (courseSelected)="onCourseSelected($event)" />
+      }
+    </div>
+  
+
 
 </div>
 
