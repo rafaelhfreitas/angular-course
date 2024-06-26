@@ -26,7 +26,7 @@ export class CourseCardComponent implements AfterViewInit, AfterContentInit{
   @Output('courseSelected')
   courseEmitter = new EventEmitter<Course>();  
 
-  @ContentChildren(CourseImageComponent, {read: ElementRef})
+  @ContentChildren(CourseImageComponent)
   images: QueryList<CourseImageComponent>;
 
   constructor(){
