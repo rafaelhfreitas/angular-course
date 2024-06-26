@@ -1,12 +1,12 @@
-import { AfterContentInit, AfterViewInit, Component, ContentChild, ContentChildren, ElementRef, EventEmitter, Input, Output, QueryList } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, ContentChild, ContentChildren, ElementRef, EventEmitter, Input, Output, QueryList, TemplateRef } from '@angular/core';
 import { Course } from '../model/course';
-import { NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
+import { NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault, NgTemplateOutlet } from '@angular/common';
 import { CourseImageComponent } from '../course-image/course-image.component';
 
 @Component({
   selector: 'course-card',
   standalone: true,
-  imports:[NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault],
+  imports:[NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault, NgTemplateOutlet],
   templateUrl: './course-card.component.html',
   styleUrl: './course-card.component.css'
 })
@@ -22,6 +22,9 @@ export class CourseCardComponent implements AfterViewInit, AfterContentInit{
     required: true
   })
   cardIndex: number;
+
+  @Input()
+  noImageTpl: TemplateRef<any>;
 
   @Output('courseSelected')
   courseEmitter = new EventEmitter<Course>();  

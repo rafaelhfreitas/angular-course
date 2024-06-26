@@ -6,18 +6,22 @@
 
 <div class="courses" *ngIf="courses[0] as course">
 
-  <course-card
-      (courseSelected)="onCourseSelected($event)"
-      [course]="course">
+  <ng-template #blankImage let-courseName="description">
+    <p class="warn">{{courseName}} has no image avaiable yet.</p>
+    <img src="/assets/empty-image.png" alt="">
+  </ng-template>
+  
 
-      <course-image [src]="course.iconUrl"></course-image>
-      <course-image [src]="courses[1].iconUrl"></course-image>
-      <course-image [src]="courses[2].iconUrl"></course-image>
+  <course-card 
+    (courseSelected)="onCourseSelected($event)" 
+    [course]="course"
+    [noImageTpl]="blankImage">
 
+    <course-image [src]="course.iconUrl"></course-image>
 
-      <div class="course-description">
-        {{course.longDescription}}
-      </div>
+    <div class="course-description">
+      {{course.longDescription}}
+    </div>
 
   </course-card>
 
