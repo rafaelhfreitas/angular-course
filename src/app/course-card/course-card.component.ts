@@ -2,7 +2,6 @@ import {
     AfterContentInit,
     AfterViewInit,
     Component,
-    ContentChild,
     ContentChildren,
     ElementRef,
     EventEmitter,
@@ -14,9 +13,12 @@ import {
 import {COURSES} from '../../db-data';
 import {Course} from '../model/course';
 import {CourseImageComponent} from '../course-image/course-image.component';
+import { NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault, NgTemplateOutlet } from '@angular/common';
 
 @Component({
     selector: 'course-card',
+    standalone: true,
+    imports:[NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault, NgTemplateOutlet],
     templateUrl: './course-card.component.html',
     styleUrls: ['./course-card.component.css']
 })

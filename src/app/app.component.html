@@ -6,12 +6,12 @@
 </div>
 
 
-
 <div class="courses" *ngIf="courses[0] as course">
 
     <course-card
-            (courseSelected)="onCourseSelected($event)"
-                 [course]="course">
+        (courseSelected)="onCourseSelected($event)"
+        [course]="course"
+        [highlighted]="false" >
 
         <course-image [src]="course.iconUrl"></course-image>
 

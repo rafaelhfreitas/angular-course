@@ -1,10 +1,15 @@
-import {AfterViewInit, Component, ElementRef, QueryList, ViewChild, ViewChildren} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, QueryList, ViewChildren} from '@angular/core';
 import {COURSES} from '../db-data';
 import {Course} from './model/course';
 import {CourseCardComponent} from './course-card/course-card.component';
+import { HighlightedDirective } from './directives/highlighted.directive';
+import { NgIf, NgTemplateOutlet } from '@angular/common';
+import { CourseImageComponent } from './course-image/course-image.component';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [HighlightedDirective, NgIf, CourseCardComponent, CourseImageComponent, NgTemplateOutlet],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
