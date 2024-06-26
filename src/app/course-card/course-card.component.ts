@@ -23,12 +23,10 @@ export class CourseCardComponent implements AfterViewInit{
   })
   cardIndex: number;
 
-
   @Output('courseSelected')
   courseEmitter = new EventEmitter<Course>();  
 
-
-  @ContentChild(CourseImageComponent, {read: ElementRef})
+  @ContentChild(CourseImageComponent)
   image: CourseImageComponent
 
   constructor(){
@@ -39,25 +37,20 @@ export class CourseCardComponent implements AfterViewInit{
       console.log(this.image);
   }
 
-
   isImageVisible(){
     return this.course && this.course.iconUrl;
   }
-
-   
   
   onCourseViewed() {
     console.log('card componenent - button clicked ...');
     this.courseEmitter.emit(this.course);
   }
 
-
   cardClasses(){
     if (this.course.category == 'BEGINNER') {
       return 'beginner'
     }
   }
-
 
   cardStyles(){
     return {
