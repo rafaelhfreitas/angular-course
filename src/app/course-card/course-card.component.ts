@@ -8,7 +8,8 @@ import {
     Input,
     OnInit,
     Output, QueryList, TemplateRef,
-    ViewChild
+    ViewChild,
+    ViewEncapsulation
 } from '@angular/core';
 import {COURSES} from '../../db-data';
 import {Course} from '../model/course';
@@ -20,7 +21,8 @@ import { NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault, NgTemplateOutlet } from 
     standalone: true,
     imports:[NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault, NgTemplateOutlet],
     templateUrl: './course-card.component.html',
-    styleUrls: ['./course-card.component.css']
+    styleUrls: ['./course-card.component.css'],
+    encapsulation: ViewEncapsulation.Emulated
 })
 export class CourseCardComponent implements OnInit, AfterViewInit, AfterContentInit {
 
