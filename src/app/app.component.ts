@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, QueryList, ViewChildren} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import {COURSES} from '../db-data';
 import {Course} from './model/course';
 import {CourseCardComponent} from './course-card/course-card.component';
@@ -21,12 +21,22 @@ export class AppComponent implements AfterViewInit {
     @ViewChildren(CourseCardComponent, {read: ElementRef})
     cards : QueryList<ElementRef>;
 
+    @ViewChild(CourseCardComponent, {read: HighlightedDirective})
+    highlighted: HighlightedDirective;
 
     constructor() {
 
     }
 
+    onToggle(isHighLighted: boolean){
+
+      console.log(isHighLighted);
+
+    }
+
     ngAfterViewInit() {
+
+      console.log(this.highlighted);
 
     }
 
