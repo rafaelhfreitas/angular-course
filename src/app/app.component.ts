@@ -5,11 +5,12 @@ import {CourseCardComponent} from './course-card/course-card.component';
 import { HighlightedDirective } from './directives/highlighted.directive';
 import { NgIf, NgTemplateOutlet } from '@angular/common';
 import { CourseImageComponent } from './course-image/course-image.component';
+import { NgxUnlessDirective } from './directives/ngx-unless.directive';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [HighlightedDirective, NgIf, CourseCardComponent, CourseImageComponent, NgTemplateOutlet],
+  imports: [HighlightedDirective, NgIf, CourseCardComponent, CourseImageComponent, NgTemplateOutlet, NgxUnlessDirective],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
