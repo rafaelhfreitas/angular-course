@@ -19,6 +19,9 @@ import { APP_CONFIG, AppConfig, CONFIG_TOKEN } from './config';
   styleUrls: ['./app.component.css'],
   standalone: true,
   imports: [CourseCardComponent, AsyncPipe, NgIf, NgFor, CourseImageComponent],
+  providers: [
+    CoursesService
+  ]
 })
 export class AppComponent implements OnInit {
 

@@ -11,6 +11,7 @@ import {
     Output,
     QueryList,
     Self,
+    SkipSelf,
     ViewEncapsulation
 } from '@angular/core';
 import {Course} from '../model/course';
@@ -40,7 +41,7 @@ export class CourseCardComponent implements OnInit {
     courseEmitter = new EventEmitter<Course>();
 
 
-    constructor(@Self() private coursesService: CoursesService) {
+    constructor(@SkipSelf() private coursesService: CoursesService) {
 
     }
 
