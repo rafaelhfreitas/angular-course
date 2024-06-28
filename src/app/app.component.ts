@@ -19,24 +19,22 @@ import { APP_CONFIG, AppConfig, CONFIG_TOKEN } from './config';
   styleUrls: ['./app.component.css'],
   standalone: true,
   imports: [CourseCardComponent, AsyncPipe, NgIf, NgFor, CourseImageComponent, HighlightedDirective],
-  providers: [
-    CoursesService
-  ]
 })
 export class AppComponent implements OnInit {
+
+
+  courses = COURSES;
 
   courses$: Observable<Course[]>;
 
   constructor(private coursesService: CoursesService,
               @Inject(CONFIG_TOKEN) private config: AppConfig) {
 
-    console.log(config);
-
   }
 
   ngOnInit() {
 
-    this.courses$ = this.coursesService.loadCourses();
+    // this.courses$ = this.coursesService.loadCourses();
   }
 
 

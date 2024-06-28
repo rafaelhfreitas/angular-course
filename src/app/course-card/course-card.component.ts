@@ -25,9 +25,6 @@ import { CoursesService } from '../services/courses.service';
     styleUrls: ['./course-card.component.css'],
     standalone: true,
     imports:[NgIf, NgSwitch, NgSwitchCase, CourseImageComponent],
-    providers: [
-        CoursesService
-    ]
 })
 export class CourseCardComponent implements OnInit {
 
@@ -41,11 +38,16 @@ export class CourseCardComponent implements OnInit {
     courseEmitter = new EventEmitter<Course>();
 
 
-    constructor(@SkipSelf() private coursesService: CoursesService) {
+    constructor(private coursesService: CoursesService) {
 
     }
 
     ngOnInit() {
+
+    }
+
+    onTitleChanged(newTitle: string) {
+        this.course.description = newTitle;
 
     }
 

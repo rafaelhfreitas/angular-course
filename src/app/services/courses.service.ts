@@ -7,11 +7,12 @@ import { Course } from '../model/course';
 
 let counter:number  = 0;
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class CoursesService {
 
   id: number;
-
 
   constructor(private http: HttpClient) { 
     counter++;
