@@ -19,10 +19,7 @@ import { CourseImageComponent } from './course-image/course-image.component';
   standalone: true,
   imports: [CourseCardComponent, AsyncPipe, NgIf, NgFor, CourseImageComponent],
   providers: [
-    { 
-      provide: CoursesService, 
-      useClass: CoursesService
-    }
+    CoursesService
   ]
 })
 export class AppComponent implements OnInit {
