@@ -18,7 +18,7 @@ import { APP_CONFIG, AppConfig, CONFIG_TOKEN } from './config';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   standalone: true,
-  imports: [CourseCardComponent, AsyncPipe, NgIf, NgFor, CourseImageComponent],
+  imports: [CourseCardComponent, AsyncPipe, NgIf, NgFor, CourseImageComponent, HighlightedDirective],
   providers: [
     CoursesService
   ]
