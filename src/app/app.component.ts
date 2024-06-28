@@ -10,11 +10,7 @@ import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { CourseImageComponent } from './course-image/course-image.component';
 
 
-function coursesServiceProvider(http: HttpClient): CoursesService {
-  return new CoursesService(http);
-}
 
-const COURSES_SERVICE = new InjectionToken<CoursesService>('COURSES_SERVICE');
 
 @Component({
   selector: 'app-root',
@@ -24,9 +20,8 @@ const COURSES_SERVICE = new InjectionToken<CoursesService>('COURSES_SERVICE');
   imports: [CourseCardComponent, AsyncPipe, NgIf, NgFor, CourseImageComponent],
   providers: [
     { 
-      provide: COURSES_SERVICE, 
-      useFactory: coursesServiceProvider, 
-      deps: [HttpClient] 
+      provide: CoursesService, 
+      useClass: CoursesService
     }
   ]
 })
@@ -34,7 +29,7 @@ export class AppComponent implements OnInit {
 
   courses$: Observable<Course[]>;
 
-  constructor(@Inject(COURSES_SERVICE) private coursesService: CoursesService) {
+  constructor(private coursesService: CoursesService) {
 
   }
 
