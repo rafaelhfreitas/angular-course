@@ -7,20 +7,26 @@ import {
     EventEmitter,
     Input,
     OnInit,
+    Optional,
     Output,
     QueryList,
+    Self,
     ViewEncapsulation
 } from '@angular/core';
 import {Course} from '../model/course';
 import {CourseImageComponent} from '../course-image/course-image.component';
 import { NgIf, NgSwitch, NgSwitchCase } from '@angular/common';
+import { CoursesService } from '../services/courses.service';
 
 @Component({
     selector: 'course-card',
     templateUrl: './course-card.component.html',
     styleUrls: ['./course-card.component.css'],
     standalone: true,
-    imports:[NgIf, NgSwitch, NgSwitchCase, CourseImageComponent]
+    imports:[NgIf, NgSwitch, NgSwitchCase, CourseImageComponent],
+    providers: [
+        CoursesService
+    ]
 })
 export class CourseCardComponent implements OnInit {
 
@@ -34,7 +40,7 @@ export class CourseCardComponent implements OnInit {
     courseEmitter = new EventEmitter<Course>();
 
 
-    constructor() {
+    constructor(@Self() private coursesService: CoursesService) {
 
     }
 
