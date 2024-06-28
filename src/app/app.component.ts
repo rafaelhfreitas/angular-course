@@ -8,6 +8,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { CoursesService } from './services/courses.service';
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { CourseImageComponent } from './course-image/course-image.component';
+import { APP_CONFIG, AppConfig, CONFIG_TOKEN } from './config';
 
 
 
@@ -18,12 +19,21 @@ import { CourseImageComponent } from './course-image/course-image.component';
   styleUrls: ['./app.component.css'],
   standalone: true,
   imports: [CourseCardComponent, AsyncPipe, NgIf, NgFor, CourseImageComponent],
+  providers: [
+    {
+      provide: CONFIG_TOKEN,
+      useFactory: () => APP_CONFIG
+    }
+  ]
 })
 export class AppComponent implements OnInit {
 
   courses$: Observable<Course[]>;
 
-  constructor(private coursesService: CoursesService) {
+  constructor(private coursesService: CoursesService,
+              @Inject(CONFIG_TOKEN) private config: AppConfig) {
+
+    console.log(config);
 
   }
 

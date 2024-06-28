@@ -5,8 +5,6 @@ import { Course } from '../model/course';
 
 @Injectable({
   providedIn: 'root',
-  useFactory: (http) => new CoursesService(http),
-  deps: [HttpClient]
 })
 export class CoursesService {
 
