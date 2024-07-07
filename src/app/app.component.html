@@ -1,22 +1,22 @@
 <div class="top-menu">
 
-  <img class="logo"
-       src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png">
+  <img class="logo" src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png">
 
-</div>
-
-<div class="demo">
-  <button (click)="onEditCourse()">Edit course</button>
 </div>
 
 <div>
 
-    <div class="courses" >
+  <div class="demo">
+    <button (click)="onEditCourse()">Edit course</button>
+  </div>
 
-    <course-card *ngFor="let course of courses"
-                 (courseChanged)="save($event)"  
-                 type="beginner"
-                 [course]="course">
+  <div class="courses" *ngIf="courses[0] as course">
+
+    <course-card 
+        
+        (courseChanged)="save($event)" 
+        type="beginner" 
+        [course]="course">
 
       <course-image [src]="course.iconUrl"></course-image>
 
@@ -26,7 +26,3 @@
 
 
 </div>
-
-
-
-

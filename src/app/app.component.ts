@@ -12,40 +12,46 @@ import { APP_CONFIG, AppConfig, CONFIG_TOKEN } from './config';
 
 
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   standalone: true,
   imports: [CourseCardComponent, AsyncPipe, NgIf, NgFor, CourseImageComponent, HighlightedDirective],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit {
 
   courses$: Observable<Course[]>;
-  courses: Course[];
+
+
+  courses : Course[] = COURSES; 
 
   constructor(private coursesService: CoursesService,
-              @Inject(CONFIG_TOKEN) private config: AppConfig) {
+              @Inject(CONFIG_TOKEN) private config: AppConfig
+) {
   }
+
 
   ngOnInit() {  
 
-    this.coursesService.loadCourses()
-        .subscribe( 
-            courses => {
-                this.courses = courses;
+    // console.log("ngOnInit")
 
-            });
+    // this.courses$ = this.coursesService.loadCourses();
 
   }
-  
 
 
   onEditCourse() {
-    
-  }
 
+    const course = this.courses[0];
+    const newCourse: any = {...course, description: 'ngOnChanges'};
+    this.courses[0] = newCourse;
+
+    //this.courses[0].description = 'ngOnChanges';
+    
+      
+  }
 
   save(course: Course){
     this.coursesService.saveCourse(course).subscribe(
