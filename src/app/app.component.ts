@@ -9,6 +9,7 @@ import { CoursesService } from './services/courses.service';
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { CourseImageComponent } from './course-image/course-image.component';
 import { APP_CONFIG, AppConfig, CONFIG_TOKEN } from './config';
+import { FilterByCategoryPipe } from './pipes/filter-by-category.pipe.pipe';
 
 
 
@@ -17,7 +18,7 @@ import { APP_CONFIG, AppConfig, CONFIG_TOKEN } from './config';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   standalone: true,
-  imports: [CourseCardComponent, AsyncPipe, NgIf, NgFor, CourseImageComponent, HighlightedDirective],
+  imports: [CourseCardComponent, AsyncPipe, NgIf, NgFor, CourseImageComponent, HighlightedDirective, FilterByCategoryPipe],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit {
