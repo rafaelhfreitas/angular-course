@@ -45,13 +45,7 @@ export class AppComponent implements OnInit {
 
   onEditCourse() {
 
-    const course = this.courses[0];
-    const newCourse: any = {...course, description: 'ngOnChanges'};
-    this.courses[0] = newCourse;
-
-    //this.courses[0].description = 'ngOnChanges';
-    
-      
+    this.courses[1].category  = 'ADVANCED';
   }
 
   save(course: Course){
