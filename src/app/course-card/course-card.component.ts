@@ -40,7 +40,7 @@ import { CoursesService } from '../services/courses.service';
 })
 export class CourseCardComponent {
 
-    course = input<Course>();
+    course = input.required<Course>();
 
     // @Input()
     // cardIndex: number;

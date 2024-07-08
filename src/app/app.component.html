@@ -6,22 +6,16 @@
 
 <div>
 
-  <div class="demo">
-    <button (click)="onEditCourse()" i18n>Edit course</button>
-
-    <div i18n>{ coursesTotal, plural, =0 {No courses available.}
-                coursesTotal, plural, =1 {One course is available.}
-                other { A total of {{ coursesTotal}} courses are available. }
-              }
-
-    </div>
-  </div>
   
   <div class="courses" >
     
-    <h4 i18n="welcome message|Greet the user a greeting at the beginning of the course @@welcome">Welcome to the Angular Core</h4>
-
-    <course-card 
+    @for(course of courses; track course.id)
+    {
+      <course-card [course]="course">
+        <course-image [src]="course.iconUrl"></course-image>
+      </course-card>
+    }
+    <!-- <course-card 
         *ngFor="let course of courses"
         (courseChanged)="save($event)" 
         type="beginner" 
@@ -29,7 +23,7 @@
 
       <course-image [src]="course.iconUrl"></course-image>
 
-    </course-card>
+    </course-card> -->
 
   </div>
 
