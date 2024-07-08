@@ -9,6 +9,7 @@ import {
     Component,
     computed,
     ContentChildren,
+    effect,
     ElementRef,
     EventEmitter,
     input,
@@ -37,7 +38,7 @@ import { CoursesService } from '../services/courses.service';
     imports:[NgIf, NgSwitch, NgSwitchCase, CourseImageComponent ],
     //changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CourseCardComponent implements OnInit{
+export class CourseCardComponent {
 
     course = input<Course>();
 
@@ -50,7 +51,11 @@ export class CourseCardComponent implements OnInit{
     constructor(private coursesService: CoursesService,
                 @Attribute('type') private type: string,
     ) {
-        console.log('constructor', this.course());
+        // console.log('constructor', this.course());
+
+        effect(() => {
+            console.log(`New course value: `, this.course());
+        })
 
     }
 
@@ -61,15 +66,15 @@ export class CourseCardComponent implements OnInit{
     }
 
 
-    ngOnInit() {
-        console.log('ngOnInity', this.course());
+    // ngOnInit() {
+    //     console.log('ngOnInity', this.course());
 
-        const description = computed(() => {
-            const course = this.course();
-            return course.description + '(' + course.category + ')';
-        })
+    //     const description = computed(() => {
+    //         const course = this.course();
+    //         return course.description + '(' + course.category + ')';
+    //     })
 
-    }
+    // }
 
     onTitleChanged(newTitle: string) {
         this.course().description = newTitle;
