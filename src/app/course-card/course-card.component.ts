@@ -7,10 +7,11 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    computed,
     ContentChildren,
     ElementRef,
     EventEmitter,
-    Input,
+    input,
     OnChanges,
     OnDestroy,
     OnInit,
@@ -27,49 +28,32 @@ import {CourseImageComponent} from '../course-image/course-image.component';
 import { NgIf, NgSwitch, NgSwitchCase } from '@angular/common';
 import { CoursesService } from '../services/courses.service';
 
+
 @Component({
     selector: 'course-card',
     templateUrl: './course-card.component.html',
     styleUrls: ['./course-card.component.css'],
     standalone: true,
-    imports:[NgIf, NgSwitch, NgSwitchCase, CourseImageComponent],
+    imports:[NgIf, NgSwitch, NgSwitchCase, CourseImageComponent ],
     //changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CourseCardComponent implements OnInit, OnDestroy, OnChanges, AfterContentChecked, AfterViewChecked {
+export class CourseCardComponent implements OnInit{
 
-    @Input()
-    course: Course;
+    course = input<Course>();
 
-    @Input()
-    cardIndex: number;
+    // @Input()
+    // cardIndex: number;
     
     @Output('courseChanged')
     courseEmitter = new EventEmitter<Course>();
 
     constructor(private coursesService: CoursesService,
                 @Attribute('type') private type: string,
-                private changeDetector: ChangeDetectorRef
     ) {
-        console.log('constructor', this.course);
+        console.log('constructor', this.course());
 
     }
 
-
-    ngAfterViewChecked(): void {
-        console.log('ngAfterViewChecked');
-
-    }
-
-
-    ngAfterContentChecked(): void {
-        console.log('ngAfterContentChecked');
-
-    }
-
-
-    ngOnChanges(changes: SimpleChanges): void {
-        console.log('ngOnChanges', changes);
-    }
 
 
     ngOnDestroy(): void {
@@ -78,19 +62,24 @@ export class CourseCardComponent implements OnInit, OnDestroy, OnChanges, AfterC
 
 
     ngOnInit() {
-        console.log('ngOnInity', this.course);
+        console.log('ngOnInity', this.course());
+
+        const description = computed(() => {
+            const course = this.course();
+            return course.description + '(' + course.category + ')';
+        })
 
     }
 
     onTitleChanged(newTitle: string) {
-        this.course.description = newTitle;
+        this.course().description = newTitle;
 
     }
 
 
     onSaveClicked(description:string) {
 
-        this.courseEmitter.emit({...this.course, description});
+        this.courseEmitter.emit({...this.course(), description});
 
     }
 
