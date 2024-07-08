@@ -28,6 +28,8 @@ export class AppComponent implements OnInit {
 
   courses : Course[] = COURSES; 
 
+  coursesTotal : number = this.courses.length;
+
   constructor(private coursesService: CoursesService,
               @Inject(CONFIG_TOKEN) private config: AppConfig
 ) {
